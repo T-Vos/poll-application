@@ -1,0 +1,24 @@
+@use "./base/typography.scss";
+@import url("https://fonts.googleapis.com/css2?family=Karla:wght@200;400;800&family=Work+Sans:wght@500&display=swap");
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Karla", "Work Sans", sans-serif;
+}
+
+main {
+  min-height: 100vh;
+  padding: 3rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+  // html {
+  //   color-scheme: dark;
+  // }
+}
