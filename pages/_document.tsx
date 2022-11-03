@@ -5,8 +5,8 @@ export default class CustomDocument extends Document {
     return (
       <Html lang="nl">
         <Head>
-          <meta name="description" content="A small poll application"/>
-          <meta name="author" content="Thomas Vos"/>
+          <meta name="description" content="A small poll application" />
+          <meta name="author" content="Thomas Vos" />
         </Head>
         <body>
           <Main />
