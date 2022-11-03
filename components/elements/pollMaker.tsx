@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Poll } from '../../helpers/pollType';
 import styles from '../../styles/components/pollMaker.module.scss';
 
-function PollMaker(props: { pollQuestions: Poll[]; onAddQuestion: any; onQuestionChange: any }) {
+function PollMaker(props: { pollQuestions: Poll[]; onAddQuestion: any; onQuestionChange: any; onQuestionDelete: any }) {
   const [newPollQuestion, setnewPollQuestion] = useState('');
 
   const handleChange = (event) => {
@@ -34,11 +34,11 @@ function PollMaker(props: { pollQuestions: Poll[]; onAddQuestion: any; onQuestio
         <hr />
         {props.pollQuestions.map((pollQuestion) => {
           return (
-            <input
-              onChange={(x) => props.onQuestionChange(x.target.value, pollQuestion.pollId)}
+            <UpdatePossibleAnswer
               key={`polling-${pollQuestion.pollId}`}
-              type="text"
-              value={pollQuestion.pollText}
+              pollQuestion={pollQuestion}
+              onQuestionChange={(x, y) => props.onQuestionChange(x, y)}
+              onQuestionDelete={() => props.onQuestionDelete(pollQuestion.pollId)}
             />
           );
         })}
@@ -48,3 +48,12 @@ function PollMaker(props: { pollQuestions: Poll[]; onAddQuestion: any; onQuestio
 }
 
 export default PollMaker;
+
+function UpdatePossibleAnswer(props: { pollQuestion: Poll; onQuestionChange: any; onQuestionDelete: any }) {
+  return (
+    <div className={styles.updateQuestionWrapper}>
+      <input onChange={(x) => props.onQuestionChange(x.target.value, props.pollQuestion.pollId)} type="text" value={props.pollQuestion.pollText} />
+      <button onClick={() => props.onQuestionDelete()}>X</button>
+    </div>
+  );
+}

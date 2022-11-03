@@ -41,11 +41,22 @@ const Home: NextPage = () => {
     return setPollQuestions([...newPollQuestions]);
   }
 
+  function handleQuestionDelete(pollQuestionId: string) {
+    console.log(pollQuestionId)
+    const newPollQuestions = pollQuestions.filter((x) => x.pollId !== pollQuestionId);
+    return setPollQuestions([...newPollQuestions]);
+  }
+
   return (
     <div className={styles.fullScreen}>
       <div className={styles.grid}>
         <div className={styles.gridSection}>
-          <PollMaker pollQuestions={pollQuestions} onQuestionChange={handleQuestionChange} onAddQuestion={(x: string) => addQuestionToPoll(x)} />
+          <PollMaker
+            pollQuestions={pollQuestions}
+            onQuestionDelete={handleQuestionDelete}
+            onQuestionChange={handleQuestionChange}
+            onAddQuestion={(x: string) => addQuestionToPoll(x)}
+          />
         </div>
         <div className={styles.gridSection}>
           <Vote pollQuestions={pollQuestions} onVote={(x) => addVote(x)} />
