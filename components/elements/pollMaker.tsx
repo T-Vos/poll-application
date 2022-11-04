@@ -5,7 +5,7 @@ import styles from '../../styles/components/pollMaker.module.scss';
 function PollMaker(props: { pollQuestions: Poll[]; onAddQuestion: any; onQuestionChange: any; onQuestionDelete: any }) {
   const [newPollQuestion, setnewPollQuestion] = useState('');
 
-  const handleChange = (event) => {
+  const handleChange = (event: any) => {
     setnewPollQuestion(event.target.value);
   };
 
@@ -15,7 +15,7 @@ function PollMaker(props: { pollQuestions: Poll[]; onAddQuestion: any; onQuestio
     props.onAddQuestion(question);
     return setnewPollQuestion('');
   }
-  const handleKeyPress = (event) => {
+  const handleKeyPress = (event: any) => {
     if (event.key === 'Enter') {
       return addQuestionToList(event.target.value);
     }
@@ -37,7 +37,7 @@ function PollMaker(props: { pollQuestions: Poll[]; onAddQuestion: any; onQuestio
             <UpdatePossibleAnswer
               key={`polling-${pollQuestion.pollId}`}
               pollQuestion={pollQuestion}
-              onQuestionChange={(x, y) => props.onQuestionChange(x, y)}
+              onQuestionChange={(x: string, y: string) => props.onQuestionChange(x, y)}
               onQuestionDelete={() => props.onQuestionDelete(pollQuestion.pollId)}
             />
           );

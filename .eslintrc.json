@@ -5,8 +5,7 @@
   },
   "root": true,
   "rules": {
-    "react/react-in-jsx-scope": "off",
-    "@typescript-eslint/no-explicit-any": "off"
+    "react/react-in-jsx-scope": "off"
   },
   "extends": [
     "next/core-web-vitals",

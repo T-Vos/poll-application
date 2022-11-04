@@ -42,7 +42,6 @@ const Home: NextPage = () => {
   }
 
   function handleQuestionDelete(pollQuestionId: string) {
-    console.log(pollQuestionId)
     const newPollQuestions = pollQuestions.filter((x) => x.pollId !== pollQuestionId);
     return setPollQuestions([...newPollQuestions]);
   }
